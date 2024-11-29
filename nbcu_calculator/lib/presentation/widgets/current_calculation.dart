@@ -21,11 +21,11 @@ class CurrentCalculationView extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            calcProvider.equation ?? '0',
+            calcProvider.equation,
             style: const TextStyle(fontSize: 24, color: Colors.black),
           ),
           Text(
-            calcProvider.result ?? '',
+            calcProvider.result,
             style: const TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.bold,
