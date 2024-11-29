@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:nbcu_calculator/app/engine/app_router.dart';
 import 'package:nbcu_calculator/core/providers/calculator_provider.dart';
 import 'package:nbcu_calculator/core/utils/size_utils.dart';
 
@@ -32,6 +34,11 @@ class CalculatorButton extends ConsumerWidget {
             ref.read(calculatorProvider.notifier).clearEquation();
           }else if(value == '='){
             ref.read(calculatorProvider.notifier).equals();
+          }else if(value == 'history'){
+            context.router.push(HistoryRoute(history: ref.read(calculatorProvider).history));
+
+          }else if(value == 'C'){
+            ref.read(calculatorProvider.notifier).backSpace();
           }
           else{
             ref.read(calculatorProvider.notifier).append(value);

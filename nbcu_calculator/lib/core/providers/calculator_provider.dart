@@ -39,17 +39,22 @@ class CalculatorNotifier extends StateNotifier<Calculator> {
     final model = ContextModel();
     final result = '\t=\t ${exp.evaluate(EvaluationType.REAL, model)}';
     state = state.copyWith(result: result);
-    _upadateHistory(state.equation+result);
+    _updateHistory(state.equation+result);
 
   }
-  void _upadateHistory(String equation){
-    final List<String> tempList =[];
-    tempList.add(equation);
-    state = state.copyWith(history:tempList );
-    if (state.history.length > 2) {
-      state.history.removeAt(0); // Remove the oldest result
+ void backSpace(){
+    if(state.equation.isNotEmpty && state.equation != '0'){
+      state = state.copyWith(equation: state.equation.substring(0,state.equation.length-1));
+      if(state.result.isNotEmpty){
+        state =state.copyWith(result: '');
+      }
     }
-
-
+ }
+  void _updateHistory(String equation) {
+    final updatedHistory = [...state.history, equation];
+    if (updatedHistory.length > 2) {
+      updatedHistory.removeAt(0);
+    }
+    state = state.copyWith(history: updatedHistory);
   }
 }

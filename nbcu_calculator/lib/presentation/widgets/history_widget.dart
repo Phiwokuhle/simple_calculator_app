@@ -11,10 +11,6 @@ class ResultsWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final calcProvider = ref.watch(calculatorProvider);
-    // final history = useState<List<String>>([
-    //   "6 - 5 = 1",
-    //   "10 + 5 = 15",
-    // ]);
     return Expanded(
       flex: 3,
       child: Padding(
@@ -22,7 +18,6 @@ class ResultsWidget extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            // History
             Expanded(
               child: ListView.builder(
                 reverse: true,
@@ -31,8 +26,9 @@ class ResultsWidget extends ConsumerWidget {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
+                      textAlign: TextAlign.end,
                       calcProvider.history[index],
-                      style: const  TextStyle(color: Colors.grey),
+                      style: const  TextStyle(color: Colors.grey,fontSize: 30),
                     ),
                   );
                 },

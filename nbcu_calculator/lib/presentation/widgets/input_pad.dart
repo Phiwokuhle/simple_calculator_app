@@ -17,14 +17,12 @@ class KeyPad extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //final widgetStateRead = ref.read(amountInputState.notifier);
     return Expanded(
       flex: 5,
       child: Padding(
         padding: getPadding(all: 16.0),
         child: Column(
           children: [
-            // First Row
             Expanded(
               child: Row(
                 children: [
