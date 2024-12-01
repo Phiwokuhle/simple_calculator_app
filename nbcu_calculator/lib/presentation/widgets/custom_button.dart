@@ -28,23 +28,7 @@ class CalculatorButton extends ConsumerWidget {
     return Expanded(
       flex: heightMultiplier,
       child: GestureDetector(
-        onTap: () {
-          if (value.toLowerCase() == 'ac') {
-            ref.read(calculatorProvider.notifier).clearEquation();
-          } else if (value == '=') {
-            ref.read(calculatorProvider.notifier).equals();
-          } else if (value == 'history') {
-            final List<String> history = ref.read(calculatorProvider).history;
-            if (history.isNotEmpty) {
-              context.router.push(
-                  HistoryRoute(history: ref.read(calculatorProvider).history));
-            }
-          } else if (value == 'C') {
-            ref.read(calculatorProvider.notifier).backSpace();
-          } else {
-            ref.read(calculatorProvider.notifier).append(value);
-          }
-        },
+        onTap:()=>_handleOnTap(ref: ref,context: context,value: value),
         child: Container(
           margin: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
@@ -82,5 +66,23 @@ class CalculatorButton extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+void _handleOnTap({ required WidgetRef ref, required String value, required BuildContext context}){
+  if (value.toLowerCase() == 'ac') {
+    ref.read(calculatorProvider.notifier).clearEquation();
+  } else if (value == '=') {
+    ref.read(calculatorProvider.notifier).equals();
+  } else if (value == 'history') {
+    final List<String> history = ref.read(calculatorProvider).history;
+    if (history.isNotEmpty) {
+      context.router.push(
+          HistoryRoute(history: ref.read(calculatorProvider).history));
+    }
+  } else if (value == 'C') {
+    ref.read(calculatorProvider.notifier).backSpace();
+  } else {
+    ref.read(calculatorProvider.notifier).append(value);
   }
 }

@@ -36,11 +36,15 @@ class CalculatorNotifier extends StateNotifier<Calculator> {
 
   void equals() {
     final exp = Parser().parse(state.equation);
-    final model = ContextModel();
-    final result = '\t=\t ${exp.evaluate(EvaluationType.REAL, model)}';
-    state = state.copyWith(result: result);
-    _updateHistory(state.equation+result);
+    final ContextModel model = ContextModel();
+    final evaluatedResult = exp.evaluate(EvaluationType.REAL, model);
+    final resultString = evaluatedResult % 1 == 0
+        ? evaluatedResult.toInt().toString()
+        : evaluatedResult.toString();
 
+    final result = '\t=\t $resultString';
+    state = state.copyWith(result: result);
+    _updateHistory(state.equation + result);
   }
  void backSpace(){
     if(state.equation.isNotEmpty && state.equation != '0'){
