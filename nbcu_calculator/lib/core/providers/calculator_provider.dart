@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:nbcu_calculator/core/models/calculator.dart';
+import 'package:nbcu_calculator/core/utils/calculator_parser.dart';
 import 'package:nbcu_calculator/core/utils/calculator_util.dart';
 
 final StateNotifierProvider<CalculatorNotifier, Calculator> calculatorProvider =
@@ -35,16 +36,15 @@ class CalculatorNotifier extends StateNotifier<Calculator> {
   }
 
   void equals() {
-    final exp = Parser().parse(state.equation);
-    final ContextModel model = ContextModel();
-    final evaluatedResult = exp.evaluate(EvaluationType.REAL, model);
-    final resultString = evaluatedResult % 1 == 0
-        ? evaluatedResult.toInt().toString()
-        : evaluatedResult.toString();
+    final expressionTree = parseExpression(state.equation);
+    final result = evaluateExpressionTree(expressionTree);
+    final resultString = result % 1 == 0
+        ? result.toInt().toString()
+        : result.toString();
 
-    final result = '\t=\t $resultString';
-    state = state.copyWith(result: result);
-    _updateHistory(state.equation + result);
+    final result1 = '\t=\t $resultString';
+    state = state.copyWith(result: result1);
+    _updateHistory(state.equation + result1);
   }
  void backSpace(){
     if(state.equation.isNotEmpty && state.equation != '0'){
