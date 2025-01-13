@@ -35,8 +35,8 @@ class KeyPad extends HookConsumerWidget {
                         color: Colors.white,
                       )),
                   CalculatorButton(
-                      value: "AC",
-                      backgroundColor: Colors.deepPurpleAccent,
+                    value: "AC",
+                    backgroundColor: Colors.deepPurpleAccent,
                     child: Text(
                       'AC',
                       style: TextStyle(
@@ -77,7 +77,8 @@ class KeyPad extends HookConsumerWidget {
             Expanded(
               child: Row(
                 children: [
-                  CalculatorButton(value: "7",
+                  CalculatorButton(
+                    value: "7",
                     backgroundColor: Colors.white,
                     child: Text(
                       '7',
@@ -88,7 +89,8 @@ class KeyPad extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  CalculatorButton(value: "8",
+                  CalculatorButton(
+                    value: "8",
                     backgroundColor: Colors.white,
                     child: Text(
                       '8',
@@ -99,7 +101,8 @@ class KeyPad extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  CalculatorButton(value: "9",
+                  CalculatorButton(
+                    value: "9",
                     backgroundColor: Colors.white,
                     child: Text(
                       '9',
@@ -111,8 +114,8 @@ class KeyPad extends HookConsumerWidget {
                     ),
                   ),
                   CalculatorButton(
-                      value: "+",
-                      backgroundColor: Colors.deepPurpleAccent,
+                    value: "+",
+                    backgroundColor: Colors.deepPurpleAccent,
                     child: Text(
                       '+',
                       style: TextStyle(
@@ -129,7 +132,8 @@ class KeyPad extends HookConsumerWidget {
             Expanded(
               child: Row(
                 children: [
-                  CalculatorButton(value: "4",
+                  CalculatorButton(
+                    value: "4",
                     backgroundColor: Colors.white,
                     child: Text(
                       '4',
@@ -140,7 +144,8 @@ class KeyPad extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  CalculatorButton(value: "5",
+                  CalculatorButton(
+                    value: "5",
                     backgroundColor: Colors.white,
                     child: Text(
                       '5',
@@ -151,7 +156,8 @@ class KeyPad extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  CalculatorButton(value: "6",
+                  CalculatorButton(
+                    value: "6",
                     backgroundColor: Colors.white,
                     child: Text(
                       '6',
@@ -177,87 +183,113 @@ class KeyPad extends HookConsumerWidget {
                 ],
               ),
             ),
-            // Fourth Row
-            Expanded(
-              child: Row(
-                children: [
-                  CalculatorButton(value: "1",
-                    backgroundColor: Colors.white,
-                    child: Text(
-                      '1',
-                      style: TextStyle(
-                        fontSize: getFontSize(40),
-                        color: Colors.deepPurple,
-                        fontWeight: FontWeight.bold,
+            Row(
+              children: [
+                SizedBox(
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Expanded(
+                          child: SizedBox(
+                            width: getSize(280) ,
+                            child: Row(
+                              children: [
+                                CalculatorButton(
+                                  value: "1",
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    '1',
+                                    style: TextStyle(
+                                      fontSize: getFontSize(40),
+                                      color: Colors.deepPurple,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                CalculatorButton(
+                                  value: "2",
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    '2',
+                                    style: TextStyle(
+                                      fontSize: getFontSize(40),
+                                      color: Colors.deepPurple,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                CalculatorButton(
+                                  value: "3",
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    '3',
+                                    style: TextStyle(
+                                      fontSize: getFontSize(40),
+                                      color: Colors.deepPurple,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      // Fifth Row
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Expanded(
+                          child: SizedBox(
+                            width: getSize(280) ,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                CalculatorButton(value: "C",
+                                  backgroundColor: Colors.white,
+                                  child: Icon(Icons.backspace, color: Colors.deepPurpleAccent,size: getSize(48),),
+                                ),
+                                CalculatorButton(value: "0",
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    '0',
+                                    style: TextStyle(
+                                      fontSize: getFontSize(40),
+                                      color: Colors.deepPurple,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                CalculatorButton(
+                                  value: ".",
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    '.',
+                                    style: TextStyle(
+                                      fontSize: getFontSize(40),
+                                      color: Colors.deepPurple,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                // Spacer removed as '=' button already spans the height of two rows
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                  CalculatorButton(value: "2",
-                    backgroundColor: Colors.white,
-                    child: Text(
-                      '2',
-                      style: TextStyle(
-                        fontSize: getFontSize(40),
-                        color: Colors.deepPurple,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                  ),
-                  CalculatorButton(value: "3",
-                    backgroundColor: Colors.white,
-                    child: Text(
-                      '3',
-                      style: TextStyle(
-                        fontSize: getFontSize(40),
-                        color: Colors.deepPurple,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  // Empty space where '=' button starts spanning
-                  const Spacer(flex: 1),
-                ],
-              ),
-            ),
-            // Fifth Row
-            Expanded(
-              child: Row(
-                children: [
-                  CalculatorButton(value: "C",
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.backspace, color: Colors.deepPurpleAccent,size: getSize(48),),
-                  ),
-                  CalculatorButton(value: "0",
-                    backgroundColor: Colors.white,
-                    child: Text(
-                      '0',
-                      style: TextStyle(
-                        fontSize: getFontSize(40),
-                        color: Colors.deepPurple,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  CalculatorButton(value: ".",
-                    backgroundColor: Colors.white,
-                    child: Text(
-                      '.',
-                      style: TextStyle(
-                        fontSize: getFontSize(40),
-                        color: Colors.deepPurple,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  // '=' Button spanning two rows
-                  Expanded(
-                    flex: 1,
+                ),
+                Expanded(
+                  flex: 1, // Adjust flex to span two rows
+                  child: SizedBox(
+                    height: getSize(148),
                     child: CalculatorButton(
                       value: '=',
                       backgroundColor: Colors.deepPurple,
                       textColor: Colors.white,
-                      buttonHeight: 400,
                       child: Text(
                         '=',
                         style: TextStyle(
@@ -268,8 +300,8 @@ class KeyPad extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
